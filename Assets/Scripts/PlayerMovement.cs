@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     
     private Vector2 moveInput;
     private Rigidbody2D rb;
-    private CapsuleCollider2D cd;
+    private CapsuleCollider2D bodyCollider;
+    private BoxCollider2D feetCollider;
     private Animator _animator;
     private bool playerHasHorizontalSpeed;
     private bool isGrounded;
@@ -23,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        cd = GetComponent<CapsuleCollider2D>();
+        bodyCollider = GetComponent<CapsuleCollider2D>();
+        feetCollider = GetComponent<BoxCollider2D>();
         _animator = GetComponent<Animator>();
         gravityScaleAtStart = rb.gravityScale;
     }
@@ -42,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     
     void OnJump(InputValue value)
     {
-        if(value.isPressed && cd.IsTouchingLayers(groundLayer))
+        if(value.isPressed && feetCollider.IsTouchingLayers(groundLayer))
         {
             // Jump();
             rb.velocity += new Vector2(rb.velocity.x, jumpSpeed);
@@ -52,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     
     void ClimbLadder()
     {
-        if(cd.IsTouchingLayers(climbingLayer))
+        if (bodyCollider.IsTouchingLayers(climbingLayer))
         {
             isClimbing = moveInput.y != 0;
             _animator.SetBool("isClimbing", isClimbing);

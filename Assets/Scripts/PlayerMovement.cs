@@ -8,18 +8,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 2f;
+    [SerializeField] Vector2 deathKick = new Vector2(20f, 20f);
     public LayerMask groundLayer;
     public LayerMask climbingLayer;
+    public LayerMask enemyLayer;
     
     private Vector2 moveInput;
     private Rigidbody2D rb;
     private CapsuleCollider2D bodyCollider;
     private BoxCollider2D feetCollider;
     private Animator _animator;
+    private PlayerInput _playerInput;
+    
     private bool playerHasHorizontalSpeed;
     private bool isGrounded;
     private bool isClimbing;
-    float gravityScaleAtStart;
+    private bool isAlive = true;
+    private float gravityScaleAtStart;
     
     void Start()
     {
@@ -27,14 +32,17 @@ public class PlayerMovement : MonoBehaviour
         bodyCollider = GetComponent<CapsuleCollider2D>();
         feetCollider = GetComponent<BoxCollider2D>();
         _animator = GetComponent<Animator>();
+        _playerInput = GetComponent<PlayerInput>();
         gravityScaleAtStart = rb.gravityScale;
     }
     
     void Update()
     {
+        if (!isAlive) return;
         Run();
         ClimbLadder();
         FlipSprite();
+        Die();
     }
     
     void OnMove(InputValue value)
@@ -50,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity += new Vector2(rb.velocity.x, jumpSpeed);
         }
     }
-    
     
     void ClimbLadder()
     {
@@ -86,8 +93,17 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
         }
-        
-        
+    }
+
+    void Die()
+    {
+        if (bodyCollider.IsTouchingLayers(enemyLayer) || feetCollider.IsTouchingLayers(enemyLayer))
+        {
+            isAlive = false;
+            _animator.SetTrigger("Death");
+            _playerInput.enabled = false;
+            rb.velocity = deathKick;
+        }
     }
     
 }

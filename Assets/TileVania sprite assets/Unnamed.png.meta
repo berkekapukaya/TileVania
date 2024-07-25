@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f4038c1b57d5040a885f31c02be01123
+guid: 4d3444149b395405e8420379be2263ce
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -124,19 +124,23 @@ TextureImporter:
     sprites: []
     outline: []
     physicsShape:
-    - - {x: -15, y: -16}
-      - {x: -10, y: -9}
-      - {x: -8, y: -4}
-      - {x: -6, y: 1}
-      - {x: -4, y: 0}
-      - {x: -3, y: -7}
-      - {x: 1, y: -16}
-      - {x: 6, y: -8}
-      - {x: 7, y: -2}
-      - {x: 9, y: 2}
-      - {x: 11, y: 1}
-      - {x: 12, y: -8}
-      - {x: 14, y: -16}
+    - - {x: -26.5, y: -114}
+      - {x: -26.5, y: -76}
+      - {x: -8.5, y: -40}
+      - {x: 6.5, y: -3}
+      - {x: 8.5, y: 95}
+      - {x: -13.5, y: 94}
+      - {x: -7.5, y: 140}
+      - {x: 5.5, y: 161}
+      - {x: 32.5, y: 162}
+      - {x: 43.5, y: 143}
+      - {x: 52.5, y: 96}
+      - {x: 33.5, y: 94}
+      - {x: 30.5, y: 30}
+      - {x: 30.5, y: -20}
+      - {x: 47.5, y: -53}
+      - {x: 62.5, y: -78}
+      - {x: 62.5, y: -115}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 1537655665

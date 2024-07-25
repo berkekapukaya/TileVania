@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask climbingLayer;
     public LayerMask enemyLayer;
+    public LayerMask hazardLayer;
+    public GameObject _bulletPrefab;
+    public Transform _gun;
     
     private Vector2 moveInput;
     private Rigidbody2D rb;
@@ -19,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D feetCollider;
     private Animator _animator;
     private PlayerInput _playerInput;
+    private GameObject _bullet;
+    
     
     private bool playerHasHorizontalSpeed;
     private bool isGrounded;
@@ -43,6 +49,15 @@ public class PlayerMovement : MonoBehaviour
         ClimbLadder();
         FlipSprite();
         Die();
+    }
+    
+    void OnFire(InputValue value)
+    {
+        if (!isAlive) return;
+        
+        _bullet = Instantiate(_bulletPrefab, _gun.position, Quaternion.Euler(0, 0 ,Mathf.Sign(transform.localScale.x) * -90));
+        _bullet.transform.SetParent(_gun);
+        _animator.SetTrigger("Shoot");
     }
     
     void OnMove(InputValue value)
@@ -97,7 +112,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Die()
     {
-        if (bodyCollider.IsTouchingLayers(enemyLayer) || feetCollider.IsTouchingLayers(enemyLayer))
+        if (bodyCollider.IsTouchingLayers(enemyLayer) 
+            || feetCollider.IsTouchingLayers(enemyLayer) 
+            || bodyCollider.IsTouchingLayers(hazardLayer))
         {
             isAlive = false;
             _animator.SetTrigger("Death");

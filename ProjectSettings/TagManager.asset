@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Coin
+  - LevelExit
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Enemies
   - Hazards
   - Bullet
-  - 
+  - Interactables
   - 
   - 
   - 
@@ -50,6 +52,9 @@ TagManager:
     locked: 0
   - name: Platforms
     uniqueID: 2543716585
+    locked: 0
+  - name: Interactables
+    uniqueID: 3928035033
     locked: 0
   - name: Enemies
     uniqueID: 1719380791

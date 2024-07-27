@@ -24,10 +24,5 @@ public class EnemyMovement : MonoBehaviour
         moveSpeed = -moveSpeed;
         transform.localScale = new Vector2(Mathf.Sign(moveSpeed), 1f);
     }
-
-    void FlipSprite()
-    {
-        
-        
-    }
+    
 }

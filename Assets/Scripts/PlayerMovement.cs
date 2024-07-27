@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject _bulletPrefab;
     public Transform _gun;
     
+    
     private Vector2 moveInput;
     private Rigidbody2D rb;
     private CapsuleCollider2D bodyCollider;
@@ -24,12 +26,13 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
     private PlayerInput _playerInput;
     private GameObject _bullet;
-    
+    private GameSession _gameSession;
     
     private bool playerHasHorizontalSpeed;
     private bool isGrounded;
     private bool isClimbing;
     private bool isAlive = true;
+    private bool isCoinCollected = false;
     private float gravityScaleAtStart;
     
     void Start()
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         feetCollider = GetComponent<BoxCollider2D>();
         _animator = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput>();
+        _gameSession = FindObjectOfType<GameSession>();
         gravityScaleAtStart = rb.gravityScale;
     }
     
@@ -50,13 +54,33 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         Die();
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin") && !isCoinCollected)
+        {
+            isCoinCollected = true;
+            _gameSession.ProcessCoinPickup();
+            
+        }else if (other.CompareTag("LevelExit") && SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            StartCoroutine(_gameSession.ResetGameSession());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            isCoinCollected = false;
+        }
+    }
+
     void OnFire(InputValue value)
     {
         if (!isAlive) return;
         
         _bullet = Instantiate(_bulletPrefab, _gun.position, Quaternion.Euler(0, 0 ,Mathf.Sign(transform.localScale.x) * -90));
-        _bullet.transform.SetParent(_gun);
         _animator.SetTrigger("Shoot");
     }
     
@@ -120,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
             _animator.SetTrigger("Death");
             _playerInput.enabled = false;
             rb.velocity = deathKick;
+            _gameSession.ProcessPlayerDeath();
         }
     }
-    
 }

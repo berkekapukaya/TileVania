@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     
     Rigidbody2D rb;
     private PlayerMovement player;
+    private Rigidbody2D enemyRb;
     float xSpeed;
     
     void Start()
@@ -27,7 +28,7 @@ public class Bullet : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
+    
     void Update()
     {
         rb.velocity = new Vector2(xSpeed, 0f);

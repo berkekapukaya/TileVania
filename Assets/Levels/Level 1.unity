@@ -131011,6 +131011,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSession
       objectReference: {fileID: 0}
+    - target: {fileID: 1884376991292984117, guid: 672255d9084b8432da61d9d8dcb86a54, type: 3}
+      propertyPath: m_fontSize
+      value: 82.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884376991292984117, guid: 672255d9084b8432da61d9d8dcb86a54, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6135119349830537399, guid: 672255d9084b8432da61d9d8dcb86a54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.873898

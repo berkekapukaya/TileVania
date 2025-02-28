@@ -18,14 +18,8 @@ A **2D platformer game** developed through a Unity course, covering **Tilemap, a
 
 ---
 
-## **📸 Screenshots**
-| **Feature**       | **Screenshot**  |
-|------------------|----------------|
-| **Tilemap-Based Level Design** | ![Tilemap Screenshot](path_to_screenshot.png) |
-| **Character Movement & Jumping** | ![Player Movement](path_to_screenshot.png) |
-| **Ladder Climbing Mechanic** | ![Ladder Climbing](path_to_screenshot.png) |
-| **Enemy AI & Patrolling** | ![Enemy AI](path_to_screenshot.png) |
-| **Shooting Mechanic** | ![Shooting System](path_to_screenshot.png) |
+## 🎥 Gameplay Video
+[Watch Gameplay Video on Google Drive](https://drive.google.com/file/d/1esFmGivtNipPh2VbRIYxTx5NUMxRpq0h/view?usp=sharing)
 
 ---
 

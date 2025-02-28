@@ -1,7 +1,7 @@
 # **TileVania - 2D Platformer in Unity**
 A **2D platformer game** developed through a Unity course, covering **Tilemap, animation, physics, enemy AI, and level design**. The project demonstrates essential Unity development concepts for creating a polished **side-scrolling platformer**.
 
-![TileVania Screenshot](Screenshots/Screenshot 2025-02-28 at 12.27.53.png)  
+![TileVania Screenshot](https://github.com/berkekapukaya/TileVania/blob/42cbb5e196f803f8ed03ace2d02c2af8442a87c7/Screenshots/Screenshot%202025-02-28%20at%2012.27.53.png)  
 
 ---
 

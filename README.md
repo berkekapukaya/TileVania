@@ -37,7 +37,7 @@ A **2D platformer game** developed through a Unity course, covering **Tilemap, a
 ## **📂 How to Run the Project**
 1. Clone the repository:  
    ```sh
-   git clone https://github.com/yourusername/TileVania.git
+   git clone https://github.com/berkekapukaya/TileVania.git
 2. Open the project in **Unity**.  
 3. Load the **Level 1 Scene**.  
 4. Press **Play** in the Unity Editor to start playing.  

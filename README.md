@@ -56,7 +56,7 @@ This project helped me practice **core Unity development skills**, including:
 ---
 
 ## **📜 Credits**
-This project was built while following the **Complete C# Unity Game Developer 2D course on Udemy**, created by **GameDev.tv Team**. The project has been expanded with **additional improvements and personal modifications**.
+This project was built while following the **[Complete C# Unity Game Developer 2D](https://www.udemy.com/course/unitycourse/?couponCode=KEEPLEARNING)**, created by **[Gamedev.tv Team](https://www.udemy.com/user/gamedevtv/)**. The project has been expanded with **additional improvements and personal modifications**.
 
 ---
 
